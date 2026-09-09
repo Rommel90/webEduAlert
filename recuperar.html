@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAlert - Recuperar Contraseña</title>
+    <link rel="stylesheet" href="css/recuperar.css">
+</head>
+<body>
+
+<div class="phone">
+
+    <div class="logo-container">
+        <img src="img/logo.png" alt="Logo EduAlert" class="logo">
+    </div>
+
+    <h1 class="nombre-app">EduAlert</h1>
+
+    <h2 class="titulo">Recuperar Contraseña</h2>
+    <p class="subtitulo">Ingresa tu correo y te enviaremos un enlace.</p>
+
+    <label>Correo Electrónico</label>
+    <input id="correo" type="email" placeholder="correo@gmail.com">
+
+    <button class="btn-full" onclick="enviarEnlace()">Enviar enlace</button>
+
+    <p id="mensaje" class="mensaje"></p>
+
+    <button id="linkRecuperar" href="#" class="link" style="display:none;">
+        Volver al inicio
+    </button>
+
+</div>
+
+<script>
+function enviarEnlace() {
+    let correo = document.getElementById("correo").value;
+    let mensaje = document.getElementById("mensaje");
+    let link = document.getElementById("linkRecuperar");
+
+    if (correo === "") {
+        mensaje.innerHTML = "Por favor ingresa un correo.";
+        mensaje.style.color = "red";
+        link.style.display = "none";
+        return;
+    }
+
+    mensaje.innerHTML = "Se envió un enlace de recuperación a: " + correo;
+    mensaje.style.color = "green";
+
+    link.style.display = "block";
+    link.href = "inicio.html";  // Vuelve a inicio
+}
+</script>
+
+</body>
+</html>

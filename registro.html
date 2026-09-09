@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAlert - Registro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="phone">
+
+    <div class="logo-container">
+        <img src="img/logo.png" alt="Logo EduAlert" class="logo">
+    </div>
+
+    <h1 class="nombre-app">EduAlert</h1>
+
+    <h2 class="titulo">Registro</h2>
+    <p class="subtitulo">Crea tu cuenta en EduAlert.</p>
+
+    <label>Nombre</label>
+    <input id="nombre" type="text" placeholder="Carlos">
+
+    <label>Correo</label>
+    <input id="correo" type="email" placeholder="correo@gmail.com">
+
+    <label>Contraseña</label>
+    <input id="password" type="password" placeholder="******">
+
+    <button class="btn btn-full" onclick="registrar()">Registrarse</button>
+
+    <p id="mensaje" class="mensaje"></p>
+
+    <button href="inicio.html" class="btn btn-full link-btn">Volver al inicio</button>
+
+</div>
+
+<script>
+function registrar() {
+    let nombre = document.getElementById("nombre").value;
+    let correo = document.getElementById("correo").value;
+    let password = document.getElementById("password").value;
+
+    let mensaje = document.getElementById("mensaje");
+
+    if (nombre === "" || correo === "" || password === "") {
+        mensaje.innerHTML = "Por favor complete todos los campos.";
+        mensaje.style.color = "red";
+        return;
+    }
+
+    let usuario = {
+        nombre: nombre,
+        correo: correo,
+        password: password
+    };
+
+    localStorage.setItem("usuarioRegistrado", JSON.stringify(usuario));
+
+    mensaje.innerHTML = "Registro exitoso. Ahora puedes iniciar sesión...";
+    mensaje.style.color = "green";
+
+    setTimeout(() => {
+        window.location.href = "inicio.html";
+    }, 3000);
+}
+</script>
+
+</body>
+</html>
